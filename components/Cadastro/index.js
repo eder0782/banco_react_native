@@ -1,6 +1,6 @@
 
 import React from 'react';
-import{View,StyleSheet,Modal,Pressable,TextInput,Switch,Text, TouchableOpacity} from 'react-native';
+import{View,StyleSheet,Keyboard,Pressable,TextInput,Switch,Text, TouchableOpacity, Alert} from 'react-native';
 import Slider from '@react-native-community/slider';
 import {Picker} from '@react-native-picker/picker';
 import Confirmacao from '../Confirmacao';
@@ -31,7 +31,10 @@ export default function Main(){
         Visible={modalVisible}
         />
              
-             <View style={styles.form}>
+             <Pressable 
+             style={styles.form}
+             onPress={Keyboard.dismiss}
+             >
              <Text style={styles.titulo}>Tela de Cadastro</Text> 
                 <View>
                     <Text style={styles.label}>Nome:</Text>
@@ -52,7 +55,10 @@ export default function Main(){
                 </View>
                 <View>
                     <Text style={styles.label}>Sexo:</Text>
-                    <View style={styles.selectSexoArea}>
+                    <Pressable 
+                    style={styles.selectSexoArea}
+                     onPress={Keyboard.dismiss}
+                    >
                         <Picker
                             selectedValue={sexo}
                             onValueChange={(valor,index)=>setSexo(valor)}
@@ -63,17 +69,21 @@ export default function Main(){
                             <Picker.Item label="Masculino" value="M" />
                             <Picker.Item label="Feminino" value="F" />                
                         </Picker>
-                    </View>
+                    </Pressable>
                 </View>
                 <View style={styles.limiteArea}>
                     <Text style={styles.label}>Limite: {limite.toFixed(2)}</Text>
-                    <Slider
-                        minimumValue={0}
-                        maximumValue={1000}
-                        step={10}
-                        value={limite}
-                        onValueChange={(value)=>setLimite(value)}
-                    />
+                    <Pressable
+                        onPress={()=>Keyboard.dismiss()}
+                    >
+                        <Slider
+                            minimumValue={0}
+                            maximumValue={1000}
+                            step={10}
+                            value={limite}
+                            onValueChange={(value)=>setLimite(value)}
+                        />
+                    </Pressable>
                 </View>
             <View style={styles.areaEstudante}>
                 <Text style={[styles.label,{marginRight:20}]}>Estudante:</Text>
@@ -94,7 +104,7 @@ export default function Main(){
 
                 
 
-            </View>  
+            </Pressable>  
 
         </View>
     )
