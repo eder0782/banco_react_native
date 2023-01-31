@@ -1,5 +1,5 @@
 import React from 'react';
-import{View,StyleSheet,Modal,Pressable,Text} from 'react-native';
+import{View,StyleSheet,Modal,TouchableOpacity,Text} from 'react-native';
 // import Slider from '@react-native-community/slider';
 // import {Picker} from '@react-native-picker/picker';
 
@@ -23,12 +23,12 @@ export default function Confirmacao(props){
                 <Text style={styles.modalText}>Limite: {props.limite.toFixed(2)}</Text>
                 <Text style={styles.modalText}>Estudante: {props.isEnabled? "Sim" : "Não"}</Text>
             </View>
-            <Pressable
+            <TouchableOpacity
               style={[styles.buttonModal, styles.buttonClose]}
               onPress={() => props.setVisible(!props.Visible)}
               >
               <Text style={styles.textStyle}>Enviar</Text>
-            </Pressable>
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>
@@ -41,8 +41,10 @@ export default function Confirmacao(props){
 const styles = StyleSheet.create({
     modalView: {
         margin: 20,
-        backgroundColor: 'white',
+        backgroundColor: '#770493',
         borderRadius: 20,
+        borderColor:"#fff",
+        borderWidth:2,
         padding: 35,
         alignItems: 'center',
         shadowColor: '#000',
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F194FF',
       },
       buttonClose: {
-        backgroundColor: '#7345d6',
+        backgroundColor: '#770493',
       },
       textStyle: {
         color: 'white',
@@ -70,6 +72,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         textAlign: 'center',
         fontSize:15,
+        color:'#fff',
         fontWeight:'bold'
       },
 
@@ -77,7 +80,9 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 10,
         elevation: 2,
-        width:120
+        width:120,
+        borderColor:"#fff",
+        borderWidth:2
       },
       modalData:{
         width:'100%',
